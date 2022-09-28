@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.yogesh.neofeedapp.viewmodel.NeoFeedViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.NeoFeedFragment">
+
+        <!--        1.	Fastest Asteroid in km/h (Respective Asteroid ID & its speed)-->
+        <!--        2.	Closest Asteroid (Respective Asteroid ID & its distance)-->
+        <!--        3.	Average Size of the Asteroids in kilometers-->
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/neo_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Neo Feed App"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="10dp" />
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="Select Start Date : "
+                    />
+
+                <TextView
+                    android:id="@+id/tv_start_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="@{viewModel.start_date}"
+                    />
+
+                <Button
+                    android:id="@+id/button_start_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="Select"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:text="Select End Date : "
+                    android:gravity="center"
+                    android:layout_gravity="center_vertical"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_end_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="@{viewModel.end_date}"
+                    />
+
+                <Button
+                    android:id="@+id/button_end_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="Select"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <Button
+                android:id="@+id/button_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:onClick="@{viewModel::search}"
+                android:text="Search"/>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv1"
+                    android:layout_width="200sp"
+                    android:layout_height="50sp"
+                    android:gravity="center"
+                    android:text="Fastest Asteroid in km/h : " />
+
+                <TextView
+                    android:id="@+id/tv_fastest_asteroid"
+                    android:layout_width="200sp"
+                    android:layout_height="50sp"
+                    android:gravity="center"
+                    android:text="@{viewModel.fastest_asteroid}"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="200sp"
+                    android:layout_height="50sp"
+                    android:gravity="center"
+                    android:text="Closest Asteroid : "/>
+
+                <TextView
+                    android:id="@+id/tv_closest_asteroid"
+                    android:layout_width="200sp"
+                    android:layout_height="50sp"
+                    android:gravity="center"
+                    android:text="@{viewModel.closest_asteroid}" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="200sp"
+                    android:layout_height="50sp"
+                    android:gravity="center"
+                    android:text="Average Size of the Asteroids in kilometers : "
+                    />
+
+                <TextView
+                    android:id="@+id/tv_average_size_of_asteroid"
+                    android:layout_width="200sp"
+                    android:layout_height="50sp"
+                    android:gravity="center"
+                    android:text="@{viewModel.average_size_of_asteroid}"
+                    />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+<!--            <com.jjoe64.graphview.GraphView-->
+<!--                android:id="@+id/idGraphView"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                />-->
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/activity_main_linechart"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
